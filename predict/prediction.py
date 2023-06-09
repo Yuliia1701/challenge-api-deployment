@@ -1,6 +1,7 @@
 import joblib
 from preprocessing.cleaning_data import preprocess
 
+
 lr_from_joblib = joblib.load('My_model.pkl')
 encod = joblib.load("Encoded.pkl")
 

@@ -1,8 +1,19 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import Optional, Literal
-from prediction import predict
+#from typing import Optional, Literal
+from predict.prediction import predict
 import uvicorn
+from uvicorn import run
+import joblib
+from preprocessing.cleaning_data import preprocess
+import pandas as pd
+#from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import make_column_transformer
+from typing import Dict, Union
+from category_encoders import OneHotEncoder
+
+#lr_from_joblib = joblib.load('My_model.pkl')
+#encod = joblib.load('Encoded.pkl')
 
 class Property(BaseModel):
     region: str
@@ -14,13 +25,13 @@ class Property(BaseModel):
     is_furnished: str
     has_swimming_pool: str
     has_open_fire: str
-    
+
 app = FastAPI()
 
 # Route
 @app.get('/')
 def get_request():
-    return "status alive"
+    return 'status alive'
 
 @app.post("/prediction")
 def price_prediction(data_input: Property):
@@ -54,4 +65,4 @@ def get_description():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=5000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
