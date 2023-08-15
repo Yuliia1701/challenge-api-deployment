@@ -1,4 +1,11 @@
 # challenge-api-deployment
+## Mission objecttives
+- Be able to deploy a machine learning model.
+- Be able to create an API that can handle a machine learning model.
+- Deploy an API to Render with Docker.
+
+## The Mission
+The real estate company "ImmoEliza" is really happy about the regression model. They would like to create an API to let their web-developers create a website around it.
 
 ## Installation
 - fastapi
